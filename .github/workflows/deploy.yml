@@ -24,16 +24,15 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
 
           script: |
+            # set -e
+            # echo "Connexion SSH réussie"
+            # mkdir -p /var/www/github-actions-lab
+            # cd /var/www/github-actions-lab
+            # rm -rf *
+            # echo "Déploiement terminé"
+            # ls -la
             set -e
-
-            echo "Connexion SSH réussie"
-
-            mkdir -p /var/www/github-actions-lab
-
-            cd /var/www/github-actions-lab
-
-            rm -rf *
-
-            echo "Déploiement terminé"
-
-            ls -la
+            echo "Connexion SSH réussie"   
+            whoami
+            hostname
+            pwd
