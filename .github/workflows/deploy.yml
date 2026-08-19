@@ -24,15 +24,16 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
 
           script: |
-            # set -e
-            # echo "Connexion SSH réussie"
-            # mkdir -p /var/www/github-actions-lab
-            # cd /var/www/github-actions-lab
-            # rm -rf *
-            # echo "Déploiement terminé"
-            # ls -la
-            set -e
-            echo "Connexion SSH réussie"   
-            whoami
-            hostname
-            pwd
+            script: |
+                set -e
+                echo "=== Début du déploiement ==="
+                APP_DIR="/var/www/projet_colent/github-actions-lab"
+                mkdir -p "$APP_DIR"
+                cd "$APP_DIR"
+                echo "Nettoyage de l'ancienne version..."
+                rm -rf *
+                echo "Téléchargement du code depuis GitHub..."
+                git clone --depth 1 https://github.com/51MBO/github-actions-lab.git .
+                echo "=== Déploiement terminé ==="
+                echo "Contenu déployé :"
+                ls -la
